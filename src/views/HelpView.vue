@@ -42,6 +42,11 @@
       パソコン（Chrome / Edge / Firefox）での使用を想定しています。<br>
       スマートフォンでも操作は可能ですが、画面が狭いため推奨はしていません。
     </p>
+
+    <h2 class="text-xl font-semibold">要望・お問い合わせ</h2>
+    <p>
+      要望やお問い合わせのご希望がありましたら、Xアカウントへご連絡ください。<br>@yamashita_44<br>
+    </p>
   </section>
 </template>
 
