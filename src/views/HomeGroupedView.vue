@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import ExcelJS from 'exceljs'
+import * as ExcelJS from 'exceljs'
 import { saveAs } from 'file-saver'
+import type { RowValues } from 'exceljs'
 
 const date = ref(new Date().toISOString().substring(0, 10))
 const startTime = ref('09:00')
@@ -54,8 +55,12 @@ async function importFromExcel(file: File) {
 
   let i = 0
   const section = (label: string) => (rows[i]?.[1] || '').toString().trim().startsWith(label)
-  type RowData = (string | number | undefined)[]
-  const cell = (row: RowData, index: number) => (row?.[index] || '').toString().trim()
+  const cell = (row: RowValues, index: number): string => {
+  if (Array.isArray(row)) {
+    return (row[index] ?? '').toString().trim()
+  }
+  return ''
+}
 
   function advanceUntil(label: string) {
     while (i < rows.length && !section(label)) i++
@@ -153,11 +158,11 @@ async function exportToExcel() {
   })
 
   const boldStyle = { bold: true, size: 14 }
-  const borderStyle = {
-    top: { style: 'thin' },
-    bottom: { style: 'thin' },
-    left: { style: 'thin' },
-    right: { style: 'thin' }
+  const borderStyle: Partial<ExcelJS.Borders> = {
+    top: { style: 'thin' as ExcelJS.BorderStyle },
+    bottom: { style: 'thin' as ExcelJS.BorderStyle },
+    left: { style: 'thin' as ExcelJS.BorderStyle },
+    right: { style: 'thin' as ExcelJS.BorderStyle }
   }
 
   const colors = {

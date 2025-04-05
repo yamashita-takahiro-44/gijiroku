@@ -48,5 +48,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* 必要に応じてここにカスタムスタイル */
 </style>

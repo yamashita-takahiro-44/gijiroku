@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import ExcelJS from 'exceljs'
+import * as ExcelJS from 'exceljs'
 import { saveAs } from 'file-saver'
+import type { RowValues } from 'exceljs'
 
 const date = ref(new Date().toISOString().substring(0, 10))
 const startTime = ref('09:00')
@@ -63,21 +64,28 @@ async function importFromExcel(file: File) {
 
   let i = 0
   const section = (label: string) => (rows[i]?.[1] || '').toString().trim() === label
-  type RowData = (string | number | undefined)[]
-const cell = (row: RowData, index: number) => (row?.[index] || '').toString().trim()
+  const cell = (row: RowValues, index: number): string => {
+  if (Array.isArray(row)) {
+    return (row[index] ?? '').toString().trim()
+  }
+  return ''
+}
 
   function advanceUntil(label: string) {
     while (i < rows.length && !section(label)) i++
     return i < rows.length
   }
 
-  function collectList(startLabel: string, mapFn: (r: RowData) => void, headerCheck: (r: RowData) => boolean) {
+  function collectList(
+    startLabel: string,
+    mapFn: (r: RowValues) => void,
+    headerCheck: (r: RowValues) => boolean
+  ) {
     if (!advanceUntil(startLabel)) return
-    i++ // skip section title
-    if (headerCheck(rows[i])) i++ // skip header row
-    while (i < rows.length && rows[i]?.[1]) {
+    i++
+    if (headerCheck(rows[i])) i++
+    while (i < rows.length && Array.isArray(rows[i]) && rows[i]?.[1]) {
       const row = rows[i]
-      if (!row?.[1]) break
       mapFn(row)
       i++
     }
@@ -156,10 +164,10 @@ async function exportToExcel() {
 
   const boldStyle = { bold: true, size: 14 }
   const borderStyle = {
-    top: { style: 'thin' },
-    bottom: { style: 'thin' },
-    left: { style: 'thin' },
-    right: { style: 'thin' }
+    top: { style: 'thin' as ExcelJS.BorderStyle },
+    bottom: { style: 'thin' as ExcelJS.BorderStyle },
+    left: { style: 'thin' as ExcelJS.BorderStyle },
+    right: { style: 'thin' as ExcelJS.BorderStyle }
   }
 
   const colors = {
@@ -262,10 +270,10 @@ async function exportToExcel() {
 
 <template>
   <p class="text-sm text-gray-500 mt-2">
-  ※このアプリには保存機能がありません。ブラウザを更新・戻ると入力内容は消えます。<br/>
-  ※このアプリは、議事録を作成するためのツールです。<br/>
-  入力および取り込んだデータはブラウザ内部のみで扱い、外部には一切送信されません。<br/><br/>
-</p>
+    ※このアプリには保存機能がありません。ブラウザを更新・戻ると入力内容は消えます。<br />
+    ※このアプリは、議事録を作成するためのツールです。<br />
+    入力および取り込んだデータはブラウザ内部のみで扱い、外部には一切送信されません。<br /><br />
+  </p>
 
   <section class="max-w-4xl mx-auto px-4">
     <!-- 日時・時間・場所 -->
@@ -398,6 +406,4 @@ async function exportToExcel() {
   </section>
 </template>
 
-<style scoped>
-/* 今後の調整用 */
-</style>
+<style scoped></style>

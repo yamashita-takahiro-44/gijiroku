@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// 特にロジックは不要な静的ページ
 </script>
 
 <template>

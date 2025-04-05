@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// 必要ならここに何か追加
 </script>
 
 <template>
@@ -47,5 +46,4 @@
 </template>
 
 <style scoped>
-/* 追加CSSが必要ならここに */
 </style>
