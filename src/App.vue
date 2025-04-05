@@ -11,7 +11,7 @@ declare global {
 onMounted(() => {
   const script = document.createElement('script')
   script.setAttribute('async', '')
-  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-8Z9K839M5D'
   document.head.appendChild(script)
 
   window.dataLayer = window.dataLayer || []
@@ -19,7 +19,7 @@ onMounted(() => {
     window.dataLayer.push(args)
   }
   gtag('js', new Date())
-  gtag('config', 'G-XXXXXXXXXX') // ← あなたの GA4 ID に差し替えてください
+  gtag('config', 'G-8Z9K839M5D')
 })
 </script>
 

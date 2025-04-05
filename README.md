@@ -1,39 +1,75 @@
-# gijiroku
+# 議事録ツール（軽量・ローカル完結）
 
-This template should help get you started developing with Vue 3 in Vite.
+決定事項と ToDo に特化した、サーバレス・ローカル完結型の議事録作成ツールです。  
+録音も音声認識も不要。リアルタイムにメモを取りながら、そのまま綺麗な Excel に出力できます。
 
-## Recommended IDE Setup
+## 🎯 特徴
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- ✅ **軽量・高速**：Vue + Tailwind によるシンプル構成
+- ✅ **ローカル完結**：データ通信なし、完全クライアント処理
+- ✅ **サーバ不要**：バックエンド不要、Vercel 等にそのままホスティング可能
+- ✅ **Excel 出力**：会議の記録を A4 印刷用の Excel 形式で出力
+- ✅ **再読み込み対応**：出力された Excel からデータの再取り込みが可能
+- ✅ **GA・OGP 対応**：Google Analytics / SNS シェア向け設定済
 
-## Type Support for `.vue` Imports in TS
+## 🔧 技術構成
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+このアプリは以下の技術で構成されています。
 
-## Customize configuration
+| 項目             | 内容                           |
+|------------------|--------------------------------|
+| フロントエンド   | Vue 3 / `<script setup>`構文    |
+| スタイリング     | Tailwind CSS                   |
+| バンドラー       | Vite                           |
+| Excel 操作       | ExcelJS + file-saver           |
+| デプロイ先       | Vercel                          |
+| 収集ツール       | Google Analytics（gtag.js）    |
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 🛠 開発／ローカル起動手順
 
-## Project Setup
-
-```sh
+```bash
+git clone https://github.com/yamashita-takahiro-44/gijiroku.git
+cd gijiroku
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
+📦 ビルド
 npm run build
-```
+📁 ディレクトリ構成（抜粋）
+public/
+  ├─ favicon.ico
+  ├─ OGP.png
+src/
+  ├─ views/
+      ├─ HomeView.vue         ← 議題が独立したページ
+      ├─ HomeGroupedView.vue  ← 議題ごとにメモ・決定事項が紐付くページ
 
-### Lint with [ESLint](https://eslint.org/)
+## 💡 補足
+このアプリは、開発者が日々の業務で「自分が欲しかったもの」として設計・実装したものです。
+見た目は地味ですが、入力に集中できる UI、誰でも扱える Excel 出力、そして安心感のあるローカル完結性を重視しています。
 
-```sh
-npm run lint
-```
+「音声認識や要約ではなく、メモを取りながら整理したい。個人情報とか機密情報をAIに渡したくない。」
+そんな人のためのツールです。
+
+## ⚠️ 注意事項
+入力されたデータは ローカルのみ に保持され、サーバ等へは送信されません
+
+誤操作に備えて、Excel 出力による保存を強く推奨します
+
+ブラウザのリロードやタブの閉鎖でデータは失われます
+
+完全なサーバレス構成ですが、Google Analytics でのアクセス解析は含まれています
+
+## 📝 利用にあたって
+このアプリは個人開発によるものであり、商用利用も原則自由です。
+ただし、以下の点に注意してください：
+
+データ保持やセキュリティに関する保証はありません
+
+ソースコード改変・再配布は MIT ライセンスに準じます
+
+ご要望やバグ報告は GitHub Issue または PR またはX にてお知らせください
+Xアカウント @yamashita_44
+
+## 🙏 最後に
+このツールは、「軽く、早く、綺麗に」議事録を取りたかった開発者によるプロダクトです。
+今後も機能追加・改善を継続予定ですので、ご意見・感想などいただけると嬉しいです！
