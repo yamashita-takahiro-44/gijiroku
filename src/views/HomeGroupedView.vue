@@ -4,7 +4,12 @@ import * as ExcelJS from 'exceljs'
 import { saveAs } from 'file-saver'
 import type { RowValues } from 'exceljs'
 
-const date = ref(new Date().toISOString().substring(0, 10))
+function getJstDateString(): string {
+  const jst = new Date(Date.now() + 9 * 60 * 60 * 1000) // JST = UTC+9
+  return jst.toISOString().substring(0, 10)
+}
+
+const date = ref(getJstDateString())
 const startTime = ref('09:00')
 const endTime = ref('10:00')
 const place = ref('')
