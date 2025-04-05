@@ -373,7 +373,7 @@ async function exportToExcel() {
         <button @click="decisions.splice(i, 1)" class="text-red-500">✕</button>
       </div>
       <button @click="decisions.push({ content: '', person: '', deadline: '' })"
-        class="text-blue-600 text-base">決定事項を追加</button>
+        class="text-blue-600 text-base">＋ 決定事項を追加</button>
     </div>
 
     <!-- ToDo -->
