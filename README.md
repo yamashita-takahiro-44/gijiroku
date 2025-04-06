@@ -70,3 +70,7 @@ Xアカウント @yamashita_44
 ## 🙏 最後に
 このツールは、「軽く、早く、綺麗に」議事録を取りたかった開発者によるプロダクトです。
 今後も機能追加・改善を継続予定ですので、ご意見・感想などいただけると嬉しいです！
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
