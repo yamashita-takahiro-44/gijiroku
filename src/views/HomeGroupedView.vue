@@ -9,9 +9,23 @@ function getJstDateString(): string {
   return jst.toISOString().substring(0, 10)
 }
 
+function getRoundedTime(offsetMinutes: number = 0) {
+  const now = new Date()
+  now.setMinutes(now.getMinutes() + offsetMinutes)
+  const m = now.getMinutes()
+  const roundedMinutes = Math.ceil(m / 30) * 30
+  if (roundedMinutes === 60) {
+    now.setHours(now.getHours() + 1)
+    now.setMinutes(0)
+  } else {
+    now.setMinutes(roundedMinutes)
+  }
+  return now.toTimeString().substring(0, 5)
+}
+
 const date = ref(getJstDateString())
-const startTime = ref('09:00')
-const endTime = ref('10:00')
+const startTime = ref(getRoundedTime()) //30分単位の繰り上げ
+const endTime = ref(getRoundedTime(60)) //その1時間後
 const place = ref('')
 const participantGroups = ref([{ company: '', members: [''] }])
 
