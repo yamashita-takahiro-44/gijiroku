@@ -40,15 +40,6 @@ npm run dev
 npm run build
 ```
 
-📁 ディレクトリ構成（抜粋）
-public/
-  ├─ favicon.ico
-  ├─ OGP.png
-src/
-  ├─ views/
-      ├─ HomeView.vue         ← 議題が独立したページ
-      ├─ HomeGroupedView.vue  ← 議題ごとにメモ・決定事項が紐付くページ
-
 ## 💡 補足
 このアプリは、開発者が日々の業務で「自分が欲しかったもの」として設計・実装したものです。
 見た目は地味ですが、入力に集中できる UI、誰でも扱える Excel 出力、そして安心感のあるローカル完結性を重視しています。
