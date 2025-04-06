@@ -32,8 +32,14 @@ git clone https://github.com/yamashita-takahiro-44/gijiroku.git
 cd gijiroku
 npm install
 npm run dev
+```
+
 📦 ビルド
+
+```bash
 npm run build
+```
+
 📁 ディレクトリ構成（抜粋）
 public/
   ├─ favicon.ico
