@@ -20,6 +20,7 @@ onMounted(() => {
   }
   gtag('js', new Date())
   gtag('config', 'G-8Z9K839M5D')
+  gtag('event', 'page_view')
 })
 </script>
 
