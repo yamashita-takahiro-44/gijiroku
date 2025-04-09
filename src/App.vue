@@ -1,27 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 
-declare global {
-  interface Window {
-    dataLayer: unknown[]
-  }
-}
-
-onMounted(() => {
-  const script = document.createElement('script')
-  script.setAttribute('async', '')
-  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-8Z9K839M5D'
-  document.head.appendChild(script)
-
-  window.dataLayer = window.dataLayer || []
-  function gtag(...args: unknown[]) {
-    window.dataLayer.push(args)
-  }
-  gtag('js', new Date())
-  gtag('config', 'G-8Z9K839M5D')
-  gtag('event', 'page_view')
-})
 </script>
 
 <template>
