@@ -84,11 +84,11 @@ async function importFromExcel(file: File) {
   let i = 0
   const section = (label: string) => (rows[i]?.[1] || '').toString().trim() === label
   const cell = (row: RowValues, index: number): string => {
-  if (Array.isArray(row)) {
-    return (row[index] ?? '').toString().trim()
+    if (Array.isArray(row)) {
+      return (row[index] ?? '').toString().trim()
+    }
+    return ''
   }
-  return ''
-}
 
   function advanceUntil(label: string) {
     while (i < rows.length && !section(label)) i++
@@ -391,8 +391,8 @@ async function exportToExcel() {
         <input v-model="d.deadline" type="date" class="border p-4 rounded w-full md:w-1/4" />
         <button @click="decisions.splice(i, 1)" class="text-red-500">✕</button>
       </div>
-      <button @click="decisions.push({ content: '', person: '', deadline: '' })"
-        class="text-blue-600 text-base">＋ 決定事項を追加</button>
+      <button @click="decisions.push({ content: '', person: '', deadline: '' })" class="text-blue-600 text-base">＋
+        決定事項を追加</button>
     </div>
 
     <!-- ToDo -->
@@ -420,6 +420,12 @@ async function exportToExcel() {
     <div class="my-4">
       <label class="font-bold block mb-2">Excelから読み込む（このページで作成したExcelのみ取込可能）</label>
       <input type="file" accept=".xlsx" @change="handleFileUpload" class="border p-2 rounded" />
+    </div>
+
+    <div class="my-12 text-center">
+      <div id="ad-container" style="width:100%; height:90px; background:#f3f3f3; border:1px dashed #ccc;">
+        広告スペース（審査用）
+      </div>
     </div>
 
   </section>
