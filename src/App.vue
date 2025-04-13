@@ -11,6 +11,7 @@ import { RouterView } from 'vue-router'
         <nav class="space-x-4 text-sm">
           <RouterLink to="/" class="hover:underline">議事録作成</RouterLink>
           <RouterLink to="/grouped" class="hover:underline">議事録作成(議題グループ)</RouterLink>
+          <RouterLink to="/about" class="hover:underline">このツールについて</RouterLink>
           <RouterLink to="/help" class="hover:underline">使い方</RouterLink>
           <RouterLink to="/terms" class="hover:underline">利用規約</RouterLink>
         </nav>

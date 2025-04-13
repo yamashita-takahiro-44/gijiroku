@@ -13,8 +13,9 @@
     <ol class="list-decimal list-inside space-y-2">
       <li>日付・時間・場所を入力</li>
       <li>参加者（会社名ごと）を追加</li>
-      <li>議題を入力し、議題ごとに「メモ」「発言」「決定事項」「ToDo」を書く</li>
+      <li>議題を入力し、「メモ」「発言」「決定事項」「ToDo」を書く</li>
       <li>入力が終わったら、下部の「Excel出力」ボタンでファイルをダウンロード</li>
+      <li>議題ごとにグループ化して入力する画面もあります。お好みや用途で選んでください。</li>
     </ol>
 
     <h2 class="text-xl font-semibold">発言・決定事項・ToDoの入力</h2>
